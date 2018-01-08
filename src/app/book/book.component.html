@@ -1,0 +1,32 @@
+
+<div class="row">
+    <div class="col-sm-1">
+      </div>
+  <div class="col-sm-7">
+      <h3>Book List</h3>
+    <table class="table table-bordered">
+      <thead [ngClass]="{headerBackground:headerStatus,footerBackground:footerStatus}"
+        (click)="toggle()">
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Author</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let book of bookList" 
+        [class.selected]="book === selectedBook">
+          <td>{{book.id}}</td>
+          <td> <a routerLink="/book-detail/{{book.id}}">
+            {{book.name}}
+          </a></td>
+          <td>{{book.author}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-sm-4">
+      <!-- <app-book-detail [book]="selectedBook"></app-book-detail> -->
+   </div>
+</div>
+

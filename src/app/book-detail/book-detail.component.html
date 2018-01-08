@@ -1,0 +1,40 @@
+<div *ngIf="book">
+  <h2>{{book.name }} book details</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Lastname</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td>
+        <td>Id</td>
+        <td>{{book.id}}</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>Name</td>
+        <td>
+          <input [(ngModel)]="book.name" placeholder="name">
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>Author</td>
+        <td>
+          <input [(ngModel)]="book.author" placeholder="author">
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>Description</td>
+        <td>
+          <input [(ngModel)]="book.description" placeholder="description">
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
