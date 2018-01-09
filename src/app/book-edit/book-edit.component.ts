@@ -9,12 +9,12 @@ import { BookService} from '../book.service';
 import { Book } from '../book';
 
 @Component({
-  selector: 'app-book-detail',
-  templateUrl: './book-detail.component.html',
-  styleUrls: ['./book-detail.component.css'],
+  selector: 'app-book-edit',
+  templateUrl: './book-edit.component.html',
+  styleUrls: ['./book-edit.component.css'],
   providers: [ BookService]
 })
-export class BookDetailComponent implements OnInit, OnDestroy {
+export class BookEditComponent implements OnInit, OnDestroy {
   // @Input() book: Book;
   public _id : number;
   public subscription: any;
@@ -48,13 +48,15 @@ export class BookDetailComponent implements OnInit, OnDestroy {
     });
   }
 
-  // GotoEmployee(){
-  //   this.router.navigate(['bookList'])
-  // }
-  
-  // getBook(): void {
-  //   const id = +this.route.snapshot.paramMap.get('id');
-  //   this.bookService.getBook(id)
-  //     .subscribe(book => this.book = book);
-  // }
+  saveForm(){
+    this.bookService.updateBook(this._id, this.book).subscribe(response => {
+      if(response){
+        alert('The book has been updated successful');
+        this.router.navigate(['/bookList']);
+      }
+    });
+  }
+  goToBookList(){
+
+  }
 }

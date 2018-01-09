@@ -18,6 +18,6 @@ export class AppComponent implements OnInit {
 
   Logout() {
     this.loginService.SetLogin(false);
-    alert(123);
+    alert('Logout');
   }
 }
