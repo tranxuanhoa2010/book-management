@@ -1,0 +1,54 @@
+<div class="row">
+  <div class="col-sm-1">
+  </div>
+  <div class="col-sm-7">
+    <label for="">
+      <h3>Book List</h3>
+      <a class="btn btn-success" [routerLink]="['/book-add']">Add new</a>
+        <input type="text"
+         [(ngModel)]="keyword"
+         name="keyboard"/>
+        <button (click)="searchBook()" >Search</button>
+  
+    </label>
+    <table class="table table-bordered">
+      <thead [ngClass]="{headerBackground:headerStatus,footerBackground:footerStatus}" (click)="toggle()">
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Author</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let book of bookList" [class.selected]="book === selectedBook">
+          <td>{{book.Id}}</td>
+          <td>
+            <a routerLink="/book-detail/{{book.Id}}">
+              {{book.Name}}
+            </a>
+          </td>
+          <td>{{book.Author}}</td>
+          <td>
+            <a  class="btn btn-primary" routerLink="/book-edit/{{book.Id}}">
+              Edit
+            </a>
+            <button class="btn btn-danger" (click)="deleteBook(book.Id)">
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li class="page-item" *ngFor="let page of pages">
+          <a class="page-link" [routerLink]="['/bookList']" [queryParams]="{page:page, filter:123}">{{page}}</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <div class="col-sm-4">
+    <!-- <app-book-detail [book]="selectedBook"></app-book-detail> -->
+  </div>
+</div>
